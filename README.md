@@ -10,8 +10,8 @@ A Flutter project built using **MVVM architecture** and **Provider** for state m
    cd movie_app
 
 
-lib/
-├── models/        # Data models
-├── views/         # UI screens
-├── viewmodels/    # Business logic and state
-├── widgets/       # Reusable UI components
+         lib/
+         ├── models/        # Data models
+         ├── views/         # UI screens
+         ├── viewmodels/    # Business logic and state
+         ├── widgets/       # Reusable UI components
