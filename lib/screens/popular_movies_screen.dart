@@ -103,6 +103,9 @@ class _PopularMoviesScreenState extends State<PopularMoviesScreen> {
           );
         }
 
+
+
+
         final moviesToDisplay = apiRepo.upcomingMovies;
         /* return RefreshIndicator(
           onRefresh: () async {
