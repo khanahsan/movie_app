@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/favorites_provider.dart';
+import '../../viewmodels/providers/favorites_provider.dart';
 
 class FavoriteMoviesScreen extends StatefulWidget {
   const FavoriteMoviesScreen({super.key});
@@ -16,6 +16,9 @@ class _FavoriteMoviesScreenState extends State<FavoriteMoviesScreen> {
     return Consumer<FavoritesProvider>(
       builder: (context, favoritesProvider, child) {
         return Scaffold(
+          appBar: AppBar(
+            title: const Text('Favorite Movies'),
+          ),
           body: favoritesProvider.favoriteMovies.isEmpty
               ? const Center(child: Text('No favorite movies yet!'))
               : ListView.builder(

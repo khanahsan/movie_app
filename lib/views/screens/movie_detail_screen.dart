@@ -8,10 +8,9 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/api_repository_provider.dart';
-import '../model/genere_model.dart';
-import '../model/movie_reponse_model.dart';
-import '../providers/favorites_provider.dart';
+import '../../model/movie_reponse_model.dart';
+import '../../viewmodels/providers/api_repository_provider.dart';
+import '../../viewmodels/providers/favorites_provider.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
@@ -97,7 +96,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           width: 200, // Use the same fixed width here
                           child: OutlinedButton.icon(
                             onPressed: () {
-                              // Action for Watch Trailer
                               APIRepository().fetchTrailer(context, movie.id);
                             },
                             icon: const Icon(

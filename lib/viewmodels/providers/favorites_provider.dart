@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/movie_reponse_model.dart';
+import '../../model/movie_reponse_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 

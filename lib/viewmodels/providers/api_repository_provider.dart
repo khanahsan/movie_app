@@ -1,34 +1,44 @@
 import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../data/network/constants.dart';
-import '../model/genere_model.dart';
-import '../model/movie_reponse_model.dart';
-import '../screens/trailer_player_screen.dart';
-import '../data/network/endPoints.dart' as end_point;
+import '../../data/network/constants.dart';
+import '../../model/movie_reponse_model.dart';
+import '../../data/network/endPoints.dart' as end_point;
+import '../../views/screens/trailer_player_screen.dart';
 
 class APIRepository extends ChangeNotifier {
   List<Movie> _upcomingMovies = [];
-  List<Genre> _genres = [];
   bool _isLoading = false;
   String _errorMessage = '';
-  int _totalPages = 1; // Add total pages field
+  int _totalPages = 1;
 
   List<Movie> get upcomingMovies => _upcomingMovies;
-  List<Genre> get genres => _genres;
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
   int get totalPages => _totalPages;
 
 
+
   Future<bool> _checkInternetConnection() async {
     var connectivityResult = await Connectivity().checkConnectivity();
-    return connectivityResult != ConnectivityResult.none;
+    if (connectivityResult == ConnectivityResult.none) {
+      return false;
+    }
+
+    try {
+      final result = await InternetAddress.lookup('www.google.com').timeout(Duration(seconds: 5));
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      return false;
+    } on TimeoutException catch (_) {
+      return false;
+    }
   }
 
-// Fetch Popular Movies with pagination
   Future<void> fetchPopularMovies({required int page, bool clear = false}) async {
 
     bool hasInternet = await _checkInternetConnection();
@@ -41,7 +51,7 @@ class APIRepository extends ChangeNotifier {
 
     _isLoading = true;
     if (clear) {
-      _upcomingMovies.clear(); // Clear the list if starting fresh
+      _upcomingMovies.clear();
     }
     notifyListeners();
 
@@ -70,7 +80,6 @@ class APIRepository extends ChangeNotifier {
     }
   }
 
-  // Fetch Trailer
   Future<void> fetchTrailer(BuildContext context, int movieId) async {
     bool hasInternet = await _checkInternetConnection();
     if (!hasInternet) {
@@ -105,7 +114,6 @@ class APIRepository extends ChangeNotifier {
     }
   }
 
-  // Clear error message
   void clearError() {
     _errorMessage = '';
     notifyListeners();

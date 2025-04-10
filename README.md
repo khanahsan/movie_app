@@ -1,16 +1,17 @@
-# movie_app
+# Flutter Project
 
-A new Flutter project.
+A Flutter project built using **MVVM architecture** and **Provider** for state management.
 
-## Getting Started
+## 🛠️ Setup Instructions
 
-This project is a starting point for a Flutter application.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/khanahsan/movie_app.git
+   cd movie_app
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+lib/
+├── models/        # Data models
+├── views/         # UI screens
+├── viewmodels/    # Business logic and state
+├── widgets/       # Reusable UI components

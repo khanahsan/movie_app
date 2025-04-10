@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/providers/favorites_provider.dart';
-import 'package:movie_app/providers/theme_provider.dart';
-import 'package:movie_app/screens/home_screen.dart';
-import 'package:movie_app/screens/movie_detail_screen.dart';
-import 'package:movie_app/screens/popular_movies_screen.dart';
-import 'package:movie_app/screens/search_movies_screen.dart';
+import 'package:movie_app/viewmodels/providers/api_repository_provider.dart';
+import 'package:movie_app/viewmodels/providers/favorites_provider.dart';
+import 'package:movie_app/viewmodels/providers/theme_provider.dart';
+import 'package:movie_app/views/screens/home_screen.dart';
+import 'package:movie_app/views/screens/movie_detail_screen.dart';
+import 'package:movie_app/views/screens/popular_movies_screen.dart';
+import 'package:movie_app/views/screens/search_movies_screen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'providers/api_repository_provider.dart';
 import 'model/movie_reponse_model.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

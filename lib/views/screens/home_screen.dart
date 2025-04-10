@@ -2,12 +2,12 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:movie_app/screens/favorite_movies_screen.dart';
-import 'package:movie_app/screens/popular_movies_screen.dart';
-import 'package:movie_app/screens/search_movies_screen.dart';
+import 'package:movie_app/views/screens/popular_movies_screen.dart';
+import 'package:movie_app/views/screens/search_movies_screen.dart';
 import 'package:provider/provider.dart';
-import '../providers/theme_provider.dart';
-import '../widgets/bottom_navigation_bar.dart';
+import '../../viewmodels/providers/theme_provider.dart';
+import '../../widgets/bottom_navigation_bar.dart';
+import 'favorite_movies_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -140,51 +140,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 36.0,
                   borderWidth: 2.0,
                 ),
-                /*AnimatedToggleSwitch<bool>.dual(
-                  current: themeProvider.themeMode == ThemeMode.dark,
-                  first: false, // Light mode
-                  second: true, // Dark mode
-                  onChanged: (value) {
-                    themeProvider.toggleTheme();
-                    return Future.value(true);
-                  },
-                  spacing: 8.0,
-                  style: const ToggleStyle(
-                    borderColor: Color(0xFFD4AF37), // Gold border for both modes
-                    backgroundColor: Color(0xFFF5E0B7), // Light Gold to match AppBar
-                    indicatorColor: Color(0xFFD4AF37), // Gold for light mode
-                  ),
-                  iconBuilder: (value) => value
-                      ? const Icon(
-                    Icons.dark_mode,
-                    color: Colors.white,
-                    size: 20,
-                  )
-                      : const Icon(
-                    Icons.light_mode,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                  textBuilder: (value) => value
-                      ? const Text(
-                    'Dark',
-                    style: TextStyle(
-                      color: Color(0xFFFFF8E1), // Soft Cream for dark mode
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                      : const Text(
-                    'Light',
-                    style: TextStyle(
-                      color: Color(0xFF1C2526), // Deep Charcoal for light mode
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  animationDuration: const Duration(milliseconds: 500),
-                  height: 36.0,
-                  borderWidth: 2.0,
-                  //borderRadius: BorderRadius.circular(18.0),
-                ),*/
               );
             },
           ),
