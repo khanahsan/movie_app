@@ -8,8 +8,8 @@ A Flutter project built using **MVVM architecture** and **Provider** for state m
    ```bash
    git clone https://github.com/khanahsan/movie_app.git
    cd movie_app
-
-
+   
+    Project Structure
          lib/
          ├── models/        # Data models
          ├── views/         # UI screens
