@@ -11,12 +11,12 @@ import '../../data/network/endPoints.dart' as end_point;
 import '../../views/screens/trailer_player_screen.dart';
 
 class APIRepository extends ChangeNotifier {
-  List<Movie> _upcomingMovies = [];
+  List<Movie> _popularMovies = [];
   bool _isLoading = false;
   String _errorMessage = '';
   int _totalPages = 1;
 
-  List<Movie> get upcomingMovies => _upcomingMovies;
+  List<Movie> get popularMovies => _popularMovies;
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
   int get totalPages => _totalPages;
@@ -51,13 +51,13 @@ class APIRepository extends ChangeNotifier {
 
     _isLoading = true;
     if (clear) {
-      _upcomingMovies.clear();
+      _popularMovies.clear();
     }
     notifyListeners();
 
     try {
       final response = await http.get(
-        Uri.parse('${end_point.baseUrl}${end_point.upComingApiUrl}&page=$page'),
+        Uri.parse('${end_point.baseUrl}${end_point.popularMoviesEndPoint}&page=$page'),
       );
 
 
@@ -66,8 +66,8 @@ class APIRepository extends ChangeNotifier {
         final List<dynamic> movieData = data['results'];
         _totalPages = data['total_pages'];
         final newMovies = movieData.map((movie) => Movie.fromJson(movie)).toList();
-        _upcomingMovies.addAll(newMovies);
-        print('_upcomingMovies $_upcomingMovies');
+        _popularMovies.addAll(newMovies);
+        print('_popularMovies $_popularMovies');
       } else {
         throw Exception('Failed to load data');
       }

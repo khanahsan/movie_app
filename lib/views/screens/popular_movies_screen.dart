@@ -79,11 +79,11 @@ class _PopularMoviesScreenState extends State<PopularMoviesScreen> {
   Widget build(BuildContext context) {
     return Consumer<APIRepository>(
       builder: (context, apiRepo, child) {
-        if (apiRepo.isLoading && apiRepo.upcomingMovies.isEmpty) {
+        if (apiRepo.isLoading && apiRepo.popularMovies.isEmpty) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (apiRepo.errorMessage.isNotEmpty && apiRepo.upcomingMovies.isEmpty) {
+        if (apiRepo.errorMessage.isNotEmpty && apiRepo.popularMovies.isEmpty) {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +101,7 @@ class _PopularMoviesScreenState extends State<PopularMoviesScreen> {
             ),
           );
         }
-        final moviesToDisplay = apiRepo.upcomingMovies;
+        final moviesToDisplay = apiRepo.popularMovies;
         return RefreshIndicator(
           onRefresh: () async {
             currentPage = 1;

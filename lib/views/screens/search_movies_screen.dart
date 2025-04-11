@@ -95,8 +95,8 @@ class _SearchMoviesScreenState extends State<SearchMoviesScreen> with SingleTick
     setState(() {
       final query = widget.searchQuery.value.toLowerCase();
       filteredMovies = query.isEmpty
-          ? apiRepo.upcomingMovies
-          : apiRepo.upcomingMovies
+          ? apiRepo.popularMovies
+          : apiRepo.popularMovies
           .where((movie) => movie.title.toLowerCase().contains(query))
           .toList();
     });
@@ -134,11 +134,11 @@ class _SearchMoviesScreenState extends State<SearchMoviesScreen> with SingleTick
   Widget build(BuildContext context) {
     return Consumer<APIRepository>(
       builder: (context, apiRepo, child) {
-        if (apiRepo.isLoading && apiRepo.upcomingMovies.isEmpty) {
+        if (apiRepo.isLoading && apiRepo.popularMovies.isEmpty) {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (apiRepo.errorMessage.isNotEmpty && apiRepo.upcomingMovies.isEmpty) {
+        if (apiRepo.errorMessage.isNotEmpty && apiRepo.popularMovies.isEmpty) {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -159,7 +159,7 @@ class _SearchMoviesScreenState extends State<SearchMoviesScreen> with SingleTick
 
         final moviesToDisplay = widget.searchQuery.value.isNotEmpty
             ? filteredMovies
-            : apiRepo.upcomingMovies;
+            : apiRepo.popularMovies;
 
         return RefreshIndicator(
           onRefresh: () async {
