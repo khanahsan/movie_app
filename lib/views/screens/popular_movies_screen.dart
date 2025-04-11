@@ -138,7 +138,6 @@ class _PopularMoviesScreenState extends State<PopularMoviesScreen> {
                     label: 'Retry',
                     textColor: Theme.of(context).colorScheme.onErrorContainer,
                     onPressed: () {
-                      // Retry the refresh
                       apiRepo.clearError();
                       apiRepo.fetchPopularMovies(page: currentPage, clear: true);
                     },
